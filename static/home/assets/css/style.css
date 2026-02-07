@@ -6772,3 +6772,43 @@ a:focus {
     }
 }
 
+/* show text-calligraphic logo on mobile, hide image logos */
+@media (max-width: 1199px) {
+    /* hide regular image logos in header/side-menu */
+    .logo-box img,
+    .side-menu__logo img,
+    .side-menu__logo--desktop,
+    .logo-mobile-toggle img { display: none !important; }
+
+    /* ensure our text logo in nav is visible (nav already has .logo-text) */
+    .logo-text { display: inline-flex !important; align-items: center; gap: 8px; }
+
+    /* show the side-menu mobile text logo */
+    .side-menu__logo-text { display: inline-flex; align-items: center; gap: 8px; }
+
+    /* style adjustments for mobile sizing */
+    .logo-text .logo-name,
+    .side-menu__logo-text .logo-name {
+        font-family: 'Great Vibes', cursive;
+        font-size: 26px;
+        line-height: 1;
+        transform: skewX(-6deg) rotate(-0.5deg);
+		color: white;
+    }
+    .logo-text .logo-initial,
+    .side-menu__logo-text .logo-initial {
+        font-family: var(--heading-font), serif;
+        font-weight: 700;
+        font-size: 12px;
+        padding: 4px 7px;
+        border-radius: 5px;
+        background: #e5e5e5;
+        transform: translateY(-2px) skewX(-4deg);
+		color: black;
+    }
+}
+
+/* keep desktop behavior unchanged */
+@media (min-width: 1200px) {
+    .side-menu__logo-text { display: none; }
+}
