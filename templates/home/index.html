@@ -164,16 +164,17 @@
             "767": { "items": 2, "margin": 30 },
             "991": { "items": 2, "margin": 30},  "1199": { "margin": 30, "items": 3}, "1366": { "margin": 50, "items": 3 }, "1440": { "margin": 50, "items": 3 }, "1750": { "items": 3, "margin": 70 }, "1920": { "items": 3, "margin": 100 } }
     }'>
-            {% for creation in original_creations %}
-            <div class="item">
-                <div class="collection-one__single">
-                    <img src="{{ creation.image.url }}" alt="" style="width:340px; height:460px;">
-                    <div class="collection-one__content">
-                        <h3><a href="javascript:void(0)">{{ creation.title }}</a></h3>
-                    </div><!-- /.collection-one__content -->
-                </div><!-- /.collection-one__single -->
-            </div><!-- /.item -->
-            {% endfor %}
+
+                {% for creation in original_creations %}
+                <div class="item">
+                    <div class="collection-one__single">
+                        <img src="{{ creation.image.url }}" alt="" style="width:340px; height:460px;">
+                        <div class="collection-one__content">
+                            <h3><a href="javascript:void(0)">{{ creation.title }}</a></h3>
+                        </div><!-- /.collection-one__content -->
+                    </div><!-- /.collection-one__single -->
+                </div><!-- /.item -->
+                {% endfor %}
             </div><!-- /.collection-one__carousel thm__owl-carousel owl-theme -->
         </section><!-- /.collection-one -->
 
@@ -194,8 +195,7 @@
                                 <p>En vente</p>
                                 <h3>Dessins & Tirages</h3>
                             </div><!-- /.block-title -->
-                            <p style="margin-left:10px">Welcome to the World’s Leading Museum of Modern Art. It includes works of art created during the
-                                period stretching.</p>
+                            <p style="margin-left:10px">N'hesitez pas à explorer notre collection de dessins et tirages dans notre boutique en ligne.</p>
                             <div class="featured-collection__image">
                                 <img src="/static/home/assets/images/Charging.jpg" alt="">
                             </div><!-- /.featured-collection__image -->
@@ -207,7 +207,6 @@
         </section><!-- /.featured-collection -->
 
         <section class="event-one">
-            <img src="/home/assets/images/shapes/event-sculpture-1-1.png" alt="" class="event-one__moc">
             <div class="container">
                 <div class="block-title-two text-center">
                     <span class="block-title-two__line"></span><!-- /.block-title-two__line -->
@@ -274,7 +273,6 @@
                 </div><!-- /.row -->
             </div><!-- /.container -->
         </section><!-- /.blog-one -->
-
 
             <hr class="brand-divider" aria-hidden="true">
 

@@ -6756,3 +6756,19 @@ a:focus {
 @media (max-width: 480px) {
     .brand-divider { height: 4px; margin: 20px auto; }
 }
+
+
+@media (max-width: 767px) {
+    /* espace au-dessus du textarea du formulaire de contact sur mobile */
+    .contact-one__form textarea {
+        margin-top: 32px !important;
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    /* même espacement au dessus du bloc contenant le formulaire (colonne) */
+    .contact-one .col-lg-8 {
+        margin-top: 20px !important;
+    }
+}
+

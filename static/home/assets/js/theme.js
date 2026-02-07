@@ -760,3 +760,36 @@
     });
 
 })(jQuery);
+
+
+
+    try {
+        $('.collection-one__carousel').each(function () {
+            var $el = $(this);
+            // build forced options keeping existing sensible values
+            var opts = $el.data('options') || {};
+            opts.items = 1;
+            opts.margin = opts.margin || 30;
+            opts.responsive = opts.responsive || {};
+            // ensure common breakpoints use 1 item
+            ['0','480','625','767','991','1199','1366','1440','1750','1920'].forEach(function (k) {
+                opts.responsive[k] = opts.responsive[k] || {};
+                opts.responsive[k].items = 1;
+                if (opts.responsive[k].margin === undefined) opts.responsive[k].margin = opts.margin || 0;
+            });
+
+            // if already initialized, destroy first then reinit
+            try {
+                if ($el.hasClass('owl-loaded')) {
+                    $el.trigger('destroy.owl.carousel');
+                    $el.removeClass('owl-loaded');
+                    $el.find('.owl-stage-outer').children().unwrap(); // cleanup leftover structure if needed
+                }
+            } catch (err) { /* ignore destroy errors */ }
+
+            // initialize with forced options
+            $el.owlCarousel(opts);
+        });
+    } catch (e) {
+        /* ignore */
+    }
