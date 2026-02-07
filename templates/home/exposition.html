@@ -1,0 +1,89 @@
+{% extends 'home/layouts/base.html' %}
+{% block content %}
+
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div></div>
+            <div></div>
+        </div>
+    </div><!-- /.preloader -->
+    <div class="page-wrapper">
+
+        {% include 'home/layouts/nav.html' %}<!-- /.main-nav-one -->
+
+        <section class="event-two event-two__event-1-page">
+            <div class="container">
+                {% for expo in expos %}
+                {% if not forloop.counter|divisibleby:2 %}
+                <div class="event-two__single">
+                    <div class="row">
+                        <div class="col-lg-5 wow fadeInLeft" data-wow-duration="1500ms">
+                            <div class="event-two__image">
+                                <div class="event-two__image-inner">
+                                    <img src="{{ expo.image.url }}" alt="" style="width:450px; height:300px;">
+                                </div><!-- /.event-two__image-inner -->
+                            </div><!-- /.event-two__image -->
+                        </div><!-- /.col-lg-5 -->
+                        <div class="col-lg-7 d-flex">
+                            <div class="my-auto">
+                                <div class="event-two__content">
+                                    <div class="block-title event-two__title">
+                                        <p>{{ expo.start_date }} - {{ expo.end_date }}</p>
+                                        <h3>{{ expo.title }}</h3>
+                                    </div><!-- /.event-two__title -->
+                                    <p>
+                                    {{expo.description}}
+                                    </p>
+                                    <a href="javascript:void(0);" class="thm-btn event-two__btn">Détails</a><!-- /.thm-btn event-two__btn -->
+                                </div><!-- /.event-two__content -->
+    
+                            </div><!-- /.my-auto -->
+                        </div><!-- /.col-lg-7 -->
+                    </div><!-- /.row -->
+                </div><!-- /.event-two__single -->
+                {% endif %}
+                {% endfor %}
+                {% for expo in expos %}
+                {% if forloop.counter|divisibleby:2 %}
+                <div class="event-two__single">
+                    <div class="row">
+                        <div class="col-lg-5 wow fadeInLeft" data-wow-duration="1500ms">
+                            <div class="event-two__image">
+                                <div class="event-two__image-inner">
+                                    <img src="{{ expo.image.url }}" alt="" style="width:450px; height:300px;">
+                                </div><!-- /.event-two__image-inner -->
+                            </div><!-- /.event-two__image -->
+                        </div><!-- /.col-lg-5 -->
+                        <div class="col-lg-7 d-flex">
+                            <div class="my-auto">
+                                <div class="event-two__content">
+                                    <div class="block-title event-two__title">
+                                        <p>{{ expo.start_date }} - {{ expo.end_date }}</p>
+                                        <h3>{{ expo.title }}</h3>
+                                    </div><!-- /.event-two__title -->
+                                    <p>{{ expo.description }}</p>
+                                    </p>
+                                    <a href="javascript:void(0);" class="thm-btn event-two__btn">Détails</a><!-- /.thm-btn event-two__btn -->
+                                </div><!-- /.event-two__content -->
+
+                            </div><!-- /.my-auto -->
+                        </div><!-- /.col-lg-7 -->
+
+                    </div><!-- /.row -->
+                </div><!-- /.event-two__single -->
+                {% endif %}
+                {% endfor %}
+            </div><!-- /.container -->
+        </section><!-- /.event-two -->
+
+         {% include 'home/layouts/exhib_banner.html' %}
+     {% include 'home/layouts/footer.html' %}<!-- /.site-footer --><!-- /.site-footer -->
+    </div><!-- /.page-wrapper -->
+
+    {% include 'home/layouts/search.html' %}<!-- /.search-popup -->
+
+    {% include 'home/layouts/side_content.html' %}<!-- /.side-menu__block -->
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+    {% endblock content %}

@@ -1,0 +1,292 @@
+{% extends 'home/layouts/base.html' %}
+{% block content %}
+
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div></div>
+            <div></div>
+        </div>
+    </div><!-- /.preloader -->
+
+    <div class="page-wrapper">
+        {% include 'home/layouts/nav.html' %}<!-- /.main-nav-one -->
+        <!-- Banner Section -->
+        <section class="banner-section">
+            <div class="banner-carousel thm__owl-carousel owl-theme owl-carousel" data-options='{"loop": true, "items": 1, "margin": 0, "dots": false, "nav": true, "animateOut": &quot;fadeOut&quot;, "animateIn": &quot;fadeIn&quot;, "active": true, "smartSpeed": 1000, "autoplay": true, "autoplayTimeout": 6000, "autoplayHoverPause": false}'>
+                <!-- Slide Item -->
+                <div class="slide-item">
+                    <div class="image-layer lazy-image" style="background-image: url('home/assets/images/main-slider/1.jpg');"></div>
+
+                    <div class="container">
+                        <div class="content-box text-center">
+                            <h2>Expositions <br>& <br> Evènements</h2>
+                            <div class="btn-box">
+                                <a href="{% url 'expositions' %}" class="thm-btn btn-style-one">
+                                Rencontrons nous
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide Item -->
+                <div class="slide-item">
+                    <div class="image-layer lazy-image" style="background-image: url('home/assets/images/main-slider/2.jpg');"></div>
+
+                    <div class="container">
+                        <div class="content-box text-center">
+                            <h2>Oeuvres originales <br> Dessins & Tirages</h2>
+                            <div class="btn-box">
+                                <a href="{% url 'dessins_tirages' %}" class="thm-btn btn-style-one">
+                                Voir mes créations
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide Item -->
+                <div class="slide-item">
+                    <div class="image-layer lazy-image" style="background-image: url('home/assets/images/main-slider/3.jpg');"></div>
+
+                    <div class="container">
+                        <div class="content-box text-center">
+                            <h2>StreetArt<br> & <br>Live Painting</h2>
+                            <div class="btn-box">
+                                <a href="javascript:void(0)" class="thm-btn btn-style-one">
+                                Suivez-moi
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--End Banner Section -->
+
+        <div class="about-cta__wrapper">
+            <section class="cta-two">
+                <div class="container">
+                    <div class="inner-container wow fadeInUp" data-wow-duration="1500ms">
+                        <div class="row no-gutters">
+                            <div class="col-lg-4">
+                                <div class="cta-two__box">
+                                    <div class="cta-two__icon">
+                                        <i class="muzex-icon-ticket"></i>
+                                    </div><!-- /.cta-two__icon -->
+                                    <h3>Prochaine Exposition</h3>
+                                    <p>{{ next_expo.title }} <br>
+                                        {{ next_expo.start_date }} - {{ next_expo.end_date }}</p>
+                                    <a href="" class="thm-btn">Détails</a><!-- /.thm-btn -->
+                                </div><!-- /.cta-two__box -->
+                            </div><!-- /.col-lg-4 -->
+                        </div><!-- /.row -->
+                    </div><!-- /.inner-container -->
+                </div><!-- /.container -->
+            </section><!-- /.cta-two -->
+
+            <section class="about-one">
+                <div class="container">
+                    <img src="images/shapes/about-sculpture-1-1.png" alt="" class="about-one__moc">
+                    <div class="block-title">
+                        <p>Amélie</p>
+                        <h3>Bienvenue dans mon univers</h3>
+                    </div><!-- /.block-title -->
+
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <p class="about-one__highlighted-text">
+                                {{ artist.title }}
+                            </p><!-- /.about-one__highlighted-text -->
+                        </div><!-- /.col-lg-4 -->
+                        <div class="col-lg-4">
+                            <p>
+                                {{ artist.paragraphe }}
+                            </p>
+                        </div><!-- /.col-lg-4 -->
+                        <div class="col-lg-4">
+                            <p>
+                                {{ artist.paragraphe_2 }}
+                            </p>
+                        </div><!-- /.col-lg-4 -->
+                    </div><!-- /.row -->
+                </div><!-- /.container -->
+            </section><!-- /.about-one -->
+        </div><!-- /.about-cta__wrapper -->
+
+
+        <section class="exhibition-one">
+            <div class="container">
+                <div class="block-title-two text-center">
+                    <span class="block-title-two__line"></span><!-- /.block-title-two__line -->
+                    <p>Ne pas rater</p>
+                    <h3>Expositions</h3>
+                </div><!-- /.block-title-two -->
+                <div class="row high-gutter">
+                    {% for expo in expos %}
+                    <div class="col-lg-4">
+                        <div class="exhibition-one__single">
+                            <div class="exhibition-one__image">
+                                <img src="{{ expo.image.url }}" alt="" style="width:450px; height:300px;">
+                            </div><!-- /.exhibition-one__image -->
+                            <div class="exhibition-one__content">
+                                <h3><a href="javascript:void(0)">{{ expo.title }}</a></h3>
+                                <p>{{ expo.start_date }} - {{ expo.end_date }}</p>
+                            </div><!-- /.exhibition-one__content -->
+                        </div><!-- /.exhibition-one__single -->
+                    </div><!-- /.col-lg-4 -->
+                    {% endfor %}
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /.exhibition-one -->
+
+
+        <section class="collection-one" style="background-image: url(/static/home/assets/images/shapes/collection-bg-1-1.jpg);">
+            <div class="container">
+                <div class="collection-one__top">
+                    <div class="block-title">
+                        <p>Galerie</p>
+                        <h3>Oeuvres originales</h3>
+                    </div><!-- /.block-title -->
+                    <div class="more-post__block">
+                        <a class="more-post__link" href="{% url 'original_creations' %}">
+                            Voir plus
+                            <!-- /.curved-circle -->
+                        </a>
+                    </div><!-- /.more-post__block -->
+                </div><!-- /.collection-one__top -->
+            </div><!-- /.container -->
+
+            <div class="collection-one__carousel thm__owl-carousel owl-theme owl-carousel" data-options='{
+        "loop": true, "autoplay": true, "autoplayTimeout": 5000, "autoplayHoverPause": true, "smartSpeed": 700, "items": 3, "margin": 100, "dots": false, "nav": false, "responsive": { 
+            "0": { "items": 1, "margin": 0 },
+            "625": { "items": 2, "margin": 30 },
+            "767": { "items": 2, "margin": 30 },
+            "991": { "items": 2, "margin": 30},  "1199": { "margin": 30, "items": 3}, "1366": { "margin": 50, "items": 3 }, "1440": { "margin": 50, "items": 3 }, "1750": { "items": 3, "margin": 70 }, "1920": { "items": 3, "margin": 100 } }
+    }'>
+            {% for creation in original_creations %}
+            <div class="item">
+                <div class="collection-one__single">
+                    <img src="{{ creation.image.url }}" alt="" style="width:340px; height:460px;">
+                    <div class="collection-one__content">
+                        <h3><a href="javascript:void(0)">{{ creation.title }}</a></h3>
+                    </div><!-- /.collection-one__content -->
+                </div><!-- /.collection-one__single -->
+            </div><!-- /.item -->
+            {% endfor %}
+            </div><!-- /.collection-one__carousel thm__owl-carousel owl-theme -->
+        </section><!-- /.collection-one -->
+
+        <section class="featured-collection">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 featured-collection_tohide">
+                        <div class="featured-collection__left">
+                            <div class="featured-collection__image">
+                                <img src="/static/home/assets/images/Calin.jpg" alt="">
+                            </div><!-- /.featured-collection__image -->
+                            <!-- /.thm-btn featured-collection__btn -->
+                        </div><!-- /.featured-collection__left -->
+                    </div><!-- /.col-lg-6 -->
+                    <div class="col-lg-6">
+                        <div class="featured-collection__right">
+                            <div class="block-title" style="margin-left:10px">
+                                <p>En vente</p>
+                                <h3>Dessins & Tirages</h3>
+                            </div><!-- /.block-title -->
+                            <p style="margin-left:10px">Welcome to the World’s Leading Museum of Modern Art. It includes works of art created during the
+                                period stretching.</p>
+                            <div class="featured-collection__image">
+                                <img src="/static/home/assets/images/Charging.jpg" alt="">
+                            </div><!-- /.featured-collection__image -->
+                            <a href="{% url 'dessins_tirages' %}" class="thm-btn featured-collection__btn" style="margin-left:10px">VOIR LA BOUTIQUE</a>
+                        </div><!-- /.featured-collection__right -->
+                    </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /.featured-collection -->
+
+        <section class="event-one">
+            <img src="/home/assets/images/shapes/event-sculpture-1-1.png" alt="" class="event-one__moc">
+            <div class="container">
+                <div class="block-title-two text-center">
+                    <span class="block-title-two__line"></span><!-- /.block-title-two__line -->
+                    <p>What’s Going on</p>
+                    <h3>Suivez mon activité</h3>
+                </div><!-- /.block-title-two -->
+                <div class="row">
+                    {% for event in events %}
+                    <div class="col-lg-12">
+                        <div class="event-one__single">
+                            <div class="event-one__image">
+                                <div class="event-one__date">
+                                    <span>{{ event.start_date|date:"d" }}</span>
+                                    {{ event.start_date|date:"M" }}
+                                </div><!-- /.event-one__date -->
+                                <div class="event-one__image-box">
+                                    <div class="event-one__image-inner">
+                                        <img src="{{ event.image.url }}" alt="" style="width:159px; height:159px;">
+                                    </div><!-- /.event-one__image-inner -->
+                                </div><!-- /.event-one__image-box -->
+                            </div><!-- /.event-one__image -->
+                            <div class="event-one__content">
+                                <h3><a href="event-details.html">{{ event.title }}</a></h3>
+                                <p>{{ event.description }}</p>
+                            </div><!-- /.event-one__content -->
+                            <div class="event-one__btn-block">
+                                <a href="javascript:void(0)" class="thm-btn event-one__btn">Détails</a>
+                            </div><!-- /.event-one__btn-block -->
+                        </div><!-- /.event-one__single -->
+                    </div><!-- /.col-lg-12 -->
+                    {% endfor %}
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /.event-one -->
+
+        {% include 'home/layouts/exhib_banner.html' %}
+        <section class="blog-one">
+            <div class="container">
+                <div class="blog-one__top">
+                    <div class="block-title">
+                        <p>Blog</p>
+                        <h3>Dernières nouvelles</h3>
+                    </div><!-- /.block-title -->
+                </div><!-- /.blog-one__top -->
+                <div class="row">
+                    {% for post in posts %}
+                    <div class="col-lg-4">
+                        <div class="blog-one__single">
+                            <div class="blog-one__image">
+                                <img src="{{post.image.url}}" alt="" style="max-height:300px">
+                                <div class="blog-one__date">
+                                    <i class="far fa-calendar-alt"></i>
+                                    {{post.created_at|date:"d M Y"}}
+                                </div><!-- /.blog-one__date -->
+                            </div><!-- /.blog-one__image -->
+                            <div class="blog-one__content">
+                                <h3><a href="news-details.html">{{post.title}}</a></h3>
+                                <p>{{post.paragraph_1|truncatewords:20}}</p>
+                                <a href="javascript:void(0)" class="blog-one__link">Lire plus</a><!-- /.blog-one__link -->
+                            </div><!-- /.blog-one__content -->
+                        </div><!-- /.blog-one__single -->
+                    </div><!-- /.col-lg-4 -->
+                    {% endfor %}
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /.blog-one -->
+
+
+            <hr class="brand-divider" aria-hidden="true">
+
+
+        {% include 'home/layouts/footer.html' %}<!-- /.site-footer -->
+    </div><!-- /.page-wrapper -->
+
+    {% include 'home/layouts/search.html' %}<!-- /.search-popup -->
+
+    {% include 'home/layouts/side_content.html' %}<!-- /.side-menu__block -->
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+
+    {% endblock %}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home 01 || Muzex || Museum and Artists HTML Template</title>
+
+        <!-- favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="assets/images/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon/favicon-16x16.png">
+        <link rel="manifest" href="assets/images/favicon/site.webmanifest">
+        <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+        <!-- Fonts URL -->
+        <link href="https://fonts.googleapis.com/css?family=Karla:400,700%7CPlayfair+Display:400,500,600,700,800,900%7CWork+Sans:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+
+        <!-- Plugins CSS -->
+        <link rel="stylesheet" href="{% static 'home/assets/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'home/assets/css/bootstrap-datepicker.min.css' %}">
+        <link rel="stylesheet" href="{% static 'home/assets/css/bootstrap-select.min.css' %}">
+        <link rel="stylesheet" href="{% static 'home/assets/css/fontawesome-all.min.css' %}">
+        <link rel="stylesheet" href="{% static 'home/assets/css/jquery.mCustomScrollbar.min.css' %}">
+        <link rel="stylesheet" href="{% static 'home/assets/css/magnific-popup.css' %}">
+        <link rel="stylesheet" href="{% static 'home/assets/css/owl.carousel.min.css' %}">
+        <link rel="stylesheet" href="{% static 'home/assets/css/owl.theme.default.min.css' %}">
+        <link rel="stylesheet" href="{% static 'home/assets/css/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'home/assets/css/hover-min.css' %}">
+        <link rel="stylesheet" href="{% static 'home/assets/css/muzex-icons.css' %}">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="{% static 'home/assets/css/cart.css' %}">
+        <link rel="stylesheet" href="{% static 'home/assets/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'home/assets/css/responsive.css' %}">
+    </head>
+    <body>
+
+    {% block content %}
+    {% endblock %}
+
+
+        <!-- Template JS -->
+
+        <script src="{% static 'home/assets/js/jquery.min.js' %}"></script>
+        <script src="{% static 'home/assets/js/bootstrap.bundle.min.js' %}"></script>
+        <script src="{% static 'home/assets/js/bootstrap-datepicker.min.js' %}"></script>
+        <script src="{% static 'home/assets/js/bootstrap-select.min.js' %}"></script>
+        <script src="{% static 'home/assets/js/isotope.js' %}"></script>
+        <script src="{% static 'home/assets/js/jquery.ajaxchimp.min.js' %}"></script>
+        <script src="{% static 'home/assets/js/jquery.counterup.min.js' %}"></script>
+        <script src="{% static 'home/assets/js/jquery.magnific-popup.min.js' %}"></script>
+        <script src="{% static 'home/assets/js/jquery.mCustomScrollbar.concat.min.js' %}"></script>
+        <script src="{% static 'home/assets/js/jquery.validate.min.js' %}"></script>
+        <script src="{% static 'home/assets/js/owl.carousel.min.js' %}"></script>
+        <script src="{% static 'home/assets/js/TweenMax.min.js' %}"></script>
+        <script src="{% static 'home/assets/js/waypoints.min.js' %}"></script>
+        <script src="{% static 'home/assets/js/wow.min.js' %}"></script>
+        <script src="{% static 'home/assets/js/jquery.lettering.min.js' %}"></script>
+        <script src="{% static 'home/assets/js/jquery.circleType.js' %}"></script>
+
+        <!-- Custom Scripts -->
+        <script src="{% static 'home/assets/js/theme.js' %}"></script>
+
+
+<script>
+(function () {
+    'use strict';
+    // compatibility: migrate legacy array miniCartItems -> structured painterCartV1 then remove legacy key.
+    try {
+        var legacy = JSON.parse(localStorage.getItem('miniCartItems') || 'null');
+        var CART_KEY = 'painterCartV1';
+        if (Array.isArray(legacy) && legacy.length) {
+            try {
+                var cur = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+                if (!Array.isArray(cur) || cur.length === 0) {
+                    var converted = legacy.map(function (id) {
+                        return { id: String(id), title: '', price: '0.00', image: '', qty: 1 };
+                    });
+                    localStorage.setItem(CART_KEY, JSON.stringify(converted));
+                }
+            } catch (e) {
+                // ignore write errors
+            }
+            try { localStorage.removeItem('miniCartItems'); } catch (e) {}
+            try { localStorage.setItem(CART_KEY + '_sync', Date.now().toString()); } catch (e) {}
+        }
+    } catch (e) { /* ignore malformed legacy data */ }
+    // theme.js (central cart) handles all UI and click logic from now on.
+})();
+</script>
+
+    </body>
+</html>

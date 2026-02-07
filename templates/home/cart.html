@@ -1,0 +1,75 @@
+{% extends 'home/layouts/base.html' %}
+{% block content %}
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div></div>
+            <div></div>
+        </div>
+    </div><!-- /.preloader -->
+    <div class="page-wrapper">
+
+        {% include 'home/layouts/nav.html' %}<!-- /.main-nav-one -->
+
+<section class="about-four">
+<div class="container">
+<h3 style="color:black">Votre panier</h3>
+
+<div class="shopping-cart">
+  <div class="column-labels">
+    <label class="product-image">Image</label>
+    <label class="product-details">Produit</label>
+    <label class="product-price">Prix</label>
+    <label class="product-quantity">Quantité</label>
+    <label class="product-removal">Retirer</label>
+    <label class="product-line-price">Total</label>
+  </div>
+
+
+   <!-- empty cart state -->
+  <div class="shopping-cart-empty" style="display:none; text-align:center; padding:24px;">
+    <h4 style="margin:0 0 8px; color:#000;">Votre panier est vide</h4>
+    <a href="{% url 'dessins_tirages' %}" class="thm-btn">Voir la boutique</a>
+  </div>
+
+
+  <!-- JS will inject product rows here -->
+  <div class="shopping-cart-items"></div>
+
+  <div class="totals">
+    <div class="totals-item">
+      <label>Sous-total</label>
+      <div class="totals-value" id="cart-subtotal">0.00</div>
+    </div>
+    <div class="totals-item">
+      <label>TVA (5%)</label>
+      <div class="totals-value" id="cart-tax">0.00</div>
+    </div>
+    <div class="totals-item">
+      <label>Livraison</label>
+      <div class="totals-value" id="cart-shipping">0.00</div>
+    </div>
+    <div class="totals-item totals-item-total">
+      <label>Total</label>
+      <div class="totals-value" id="cart-total">0.00</div>
+    </div>
+  </div>
+
+  <button class="checkout">Paiement</button>
+</div>
+ 
+
+</div>
+</section>
+
+
+         {% include 'home/layouts/exhib_banner.html' %}
+     {% include 'home/layouts/footer.html' %}<!-- /.site-footer --><!-- /.site-footer -->
+    </div><!-- /.page-wrapper -->
+
+    {% include 'home/layouts/search.html' %}<!-- /.search-popup -->
+
+    {% include 'home/layouts/side_content.html' %}<!-- /.side-menu__block -->
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+    {% endblock content %}

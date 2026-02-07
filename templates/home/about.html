@@ -1,0 +1,111 @@
+{% extends 'home/layouts/base.html' %}
+{% block content %}
+    <div class="preloader">
+        <div class="lds-ripple">
+            <div></div>
+            <div></div>
+        </div>
+    </div><!-- /.preloader -->
+    <div class="page-wrapper">
+
+        {% include 'home/layouts/nav.html' %}<!-- /.main-nav-one -->
+
+        <section class="about-four">
+            <div class="container">
+                <div class="about-four__image wow fadeInRight" data-wow-duration="1500ms">
+                    <img src="{{artist.image.url}}" alt="" width="500" height="650">
+                </div><!-- /.about-four__image -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="about-four__content">
+                            <div class="block-title">
+                                <p>{{ artist.firstname }}</p>
+                                <h3>{{ artist.title }}</h3>
+                            </div><!-- /.block-title -->
+                            <div class="about-four__highlite-text">
+                                <p>{{ artist.paragraphe }}</p>
+                            </div><!-- /.about-four__highlite-text -->
+                            <p>{{ artist.paragraphe_2 }}</p>
+                            <p>{{ artist.paragraphe_3 }}</p>
+                        </div><!-- /.about-four__content -->
+                    </div><!-- /.col-lg-6 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </section><!-- /.about-four -->
+
+        <section class="history-one">
+            <div class="container">
+                <div class="block-title-two text-center">
+                    <p>Timeline</p>
+                    <h3>CARRIERE</h3>
+                </div><!-- /.block-title-two -->
+                {% for point in carriere_points %}
+                {% if not forloop.counter|divisibleby:"2" %}
+                    <div class="history-one__single">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="history-one__image wow fadeInLeft" data-wow-duration="1500ms">
+                                    <img src="{{ point.image.url }}" alt="" width="400" height="270">
+                                </div><!-- /.history-one__image -->
+                            </div><!-- /.col-lg-6 -->
+                            <div class="col-lg-6 d-flex">
+                                <div class="history-one__content my-auto">
+                                    <div class="history-one__top block-title">
+                                        <p>{{ point.date|date:"Y" }}</p>
+                                        <h3>{{ point.date|date:"d F" }}</h3>
+                                    </div><!-- /.history-one__top block-title -->
+                                    <p>
+                                        {{ point.description }}
+                                    </p>
+                                </div><!-- /.history-one__content -->
+                            </div><!-- /.col-lg-6 -->
+                        </div><!-- /.row -->
+                    </div><!-- /.history-one__single -->
+                {% endif %}
+                {% endfor %}
+                {% for point in carriere_points %}
+                {% if forloop.counter|divisibleby:"2" %}
+                <div class="history-one__single">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="history-one__image wow fadeInRight" data-wow-duration="1500ms">
+                                <img src="{{ point.image.url }}" alt="" width="400" height="270">
+                            </div><!-- /.history-one__image -->
+                        </div><!-- /.col-lg-6 -->
+                        <div class="col-lg-6 d-flex">
+                            <div class="history-one__content my-auto">
+                                <div class="history-one__top block-title">
+                                    <p>{{ point.date|date:"Y" }}</p>
+                                    <h3>{{ point.date|date:"d F" }}</h3>
+                                </div><!-- /.history-one__top block-title -->
+                                <p>
+                                    {{ point.description }}
+                                </p>
+                            </div><!-- /.history-one__content -->
+                        </div><!-- /.col-lg-6 -->
+                    </div><!-- /.row -->
+                </div><!-- /.history-one__single -->
+                {% endif %}
+                {% endfor %}
+            </div><!-- /.container -->
+        </section><!-- /.history-one -->
+
+        <section class="video-one text-center" style="background-image: url(/home/assets/images/resources/video-parallax-1-1-.jpg);">
+            <div class="container">
+                <div class="video-wrapper" style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/IDLeU34hNNs?si=M2atRq7Y-_zNFaKY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div><!-- /.video-popup video-one__btn -->
+            </div><!-- /.container -->
+        </section><!-- /.video-one -->
+
+        {% include 'home/layouts/exhib_banner.html' %}
+        {% include 'home/layouts/footer.html' %}<!-- /.site-footer --><!-- /.site-footer -->
+    </div><!-- /.page-wrapper -->
+
+    {% include 'home/layouts/search.html' %}<!-- /.search-popup -->
+
+    {% include 'home/layouts/side_content.html' %}<!-- /.side-menu__block -->
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+    {% endblock content %}

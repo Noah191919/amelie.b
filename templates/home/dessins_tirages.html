@@ -1,0 +1,61 @@
+{% extends 'home/layouts/base.html' %}
+{% block content %}
+
+<div class="page-wrapper">
+    {% include 'home/layouts/nav.html' %}<!-- /.main-nav-one -->
+    <section class="venue-one">
+        <div class="container">
+            <div class="venue-one__top">
+                <div class="block-title">
+                    <p>Bienvenue dans la boutique en ligne!</p>
+                    <h3>Dessins et Tirages</h3>
+                </div><!-- /.block-title -->
+                <p>Vous trouverez ici de belles créatures à l'adoption en dessins originaux et tirage d'art.<br>
+                    Pour tout demande d'achat d'oeuvre originale, ou pour être informé des prochaines oeuvres à la vente, contactez directement l'artiste via le formulaire de contact.
+                </p>
+            </div><!-- /.venue-one__top -->
+
+            <div class="row high-gutter">
+                {% for item in dessins_tirages %}
+                <div class="col-lg-4">
+                    <div class="venue-one__single">
+                        <div class="venue-one__image">
+                            <img src="{{ item.image.url }}" alt="" width="300" height="300">
+                        </div><!-- /.venue-one__image -->
+                        <div class="venue-one__content">
+                            <h3><a href="#">{{ item.title }}</a></h3>
+                            <p><span class="venue-one__time">{{ item.description }}</span></p>
+                            <hr class="venue-divider" />
+                            <p><span class="venue-one__time">{{ item.price }} €</span></p>
+                            <br>
+                            <button type="button"
+                                    class="btn btn-outline-secondary add-to-cart"
+                                    data-item-id="{{ item.id }}"
+                                    data-item-title="{{ item.title|escape }}"
+                                    data-item-price="{{ item.price|default:"0.00" }}"
+                                    data-item-image="{% if item.image %}{{ item.image.url }}{% endif %}">
+                                Ajouter au panier
+                            </button>
+                             <!-- small cart icon linking to the cart page -->
+                           <a href="{% url 'cart' %}" class="small-cart-link" title="Voir le panier" aria-label="Voir le panier">
+                               <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                           </a>
+                        </div><!-- /.venue-one__content -->
+                    </div><!-- /.venue-one__single -->
+                </div><!-- /.col-lg-4 -->
+                {% endfor %}
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section><!-- /.venue-one -->
+
+    {% include 'home/layouts/exhib_banner.html' %}
+    {% include 'home/layouts/footer.html' %}<!-- /.site-footer --><!-- /.site-footer -->
+    </div><!-- /.page-wrapper -->
+
+    {% include 'home/layouts/search.html' %}<!-- /.search-popup -->
+
+    {% include 'home/layouts/side_content.html' %}<!-- /.side-menu__block -->
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+    {% endblock content %}

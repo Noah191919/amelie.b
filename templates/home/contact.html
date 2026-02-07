@@ -1,0 +1,81 @@
+{% extends 'home/layouts/base.html' %}
+{% block content %}
+
+<div class="page-wrapper">
+    {% include 'home/layouts/nav.html' %}<!-- /.main-nav-one -->
+        <div class="contact-one">
+            <div class="container">
+                <div class="block-title-two text-center">
+                    <h3>Contact</h3>
+                </div><!-- /.block-title-two -->
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="contact-one__box">
+                            <h3>Contact</h3>
+                            <p>
+                                <a href="mailto:amelie.beral@yahoo.fr">amelie.beral@yahoo.fr</a> 
+                                <br> 
+                                <a href="tel:33624532128">+33 6 24 53 21 28</a>
+                            </p>
+                        </div><!-- /.contact-one__box -->
+                        <div class="contact-one__box">
+                            <h3>Social Contact</h3>
+                            <div class="contact-one__box-social">
+                                <a href="#" class="fab fa-facebook-f"></a>
+                                <a href="#" class="fab fa-twitter"></a>
+                                <a href="#" class="fab fa-vimeo"></a>
+                                <a href="#" class="fab fa-linkedin-in"></a>
+                            </div><!-- /.contact-one__box-social -->
+                        </div><!-- /.contact-one__box -->
+                    </div><!-- /.col-lg-4 -->
+                    <div class="col-lg-8">
+                        <form action="assets/inc/sendemail.php" class="contact-form-validated contact-one__form">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input type="text" placeholder="Nom*">
+                                </div><!-- /.col-lg-6 -->
+                                <div class="col-lg-6">
+                                    <input type="text" placeholder="Email*">
+                                </div><!-- /.col-lg-6 -->
+                                <div class="col-lg-6">
+                                    <input type="text" placeholder="Objet">
+                                </div><!-- /.col-lg-6 -->
+                                <div class="col-lg-6">
+                                    <select class="selectpicker">
+                                        <option value="#">A propos de</option>
+                                        <option value="General Query">Commande</option>
+                                        <option value="For Ticketing">Exposition</option>
+                                        <option value="For Membership">Autre</option>
+                                    </select><!-- /#.selectpicker -->
+                                </div><!-- /.col-lg-6 -->
+                                <div class="col-lg-12">
+                                    <textarea name="message" placeholder="Message"></textarea>
+                                </div><!-- /.col-lg-12 -->
+                                <div class="col-lg-12">
+                                    <button class="thm-btn contact-one__btn" type="submit">Envoyer</button>
+                                </div><!-- /.col-lg-12 -->
+                            </div><!-- /.row -->
+                        </form><!-- /.contact-one__form -->
+                    </div><!-- /.col-lg-8 -->
+                </div><!-- /.row -->
+            </div><!-- /.container -->
+        </div><!-- /.contact-one -->
+
+        <div class="contact-map-one">
+            <div class="container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2890.1860562592665!2d3.81886508878867!3d43.581840782552135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12b6adfd6d7b332f%3A0xaeea4d5060281cee!2s2%20All.%20du%20Bois%2C%2034430%20Saint-Jean-de-V%C3%A9das!5e0!3m2!1sfr!2sfr!4v1770468601492!5m2!1sfr!2sfr" class="google-map__contact" allowfullscreen></iframe>
+
+            </div><!-- /.container -->
+        </div><!-- /.contact-map-one -->
+
+        {% include 'home/layouts/exhib_banner.html' %}
+    {% include 'home/layouts/footer.html' %}<!-- /.site-footer --><!-- /.site-footer -->
+    </div><!-- /.page-wrapper -->
+
+    {% include 'home/layouts/search.html' %}<!-- /.search-popup -->
+
+    {% include 'home/layouts/side_content.html' %}<!-- /.side-menu__block -->
+
+    <a href="#" data-target="html" class="scroll-to-target scroll-to-top"><i class="fa fa-angle-up"></i></a>
+
+    {% endblock content %}
