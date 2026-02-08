@@ -651,7 +651,8 @@
                     '</div>' +
                     '<div class="product-price">' + formatPrice(price) + '</div>' +
                     '<div class="product-quantity"><input type="number" class="qty-input" value="' + qty + '" min="1"></div>' +
-                    '<div class="product-removal"><button class="remove-product btn btn-link" type="button">Supprimer</button></div>' +
+                    // changed: use icon button (Font Awesome) for delete, no surrounding text
+                    '<div class="product-removal"><button class="remove-product" type="button" title="Supprimer" aria-label="Supprimer"><i class="fa fa-trash" aria-hidden="true"></i></button></div>' +
                     '<div class="product-line-price">' + formatPrice(line) + '</div>' +
                 '</div>'
             );
@@ -758,6 +759,18 @@
         setQty(id, qty);
         renderCart();
     });
+
+    function formatPrice(v) {
+    v = parseFloat(v) || 0;
+    // round to 2 decimals to avoid floating precision issues
+    var rounded = Math.round(v * 100) / 100;
+    // if integer, return without decimals
+    if (rounded === Math.floor(rounded)) {
+        return String(rounded);
+    }
+    // else keep up to 2 decimals and trim trailing zeros
+    return rounded.toFixed(2).replace(/\.?0+$/, '');
+    };
 
 })(jQuery);
 

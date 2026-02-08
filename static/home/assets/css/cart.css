@@ -1,5 +1,8 @@
 /* Global settings */
  
+:root {
+  --thm-black: #252930;
+}
 .product-image {
   float: left;
   width: 20%;
@@ -148,15 +151,11 @@ label {
   border: 0;
   margin-top: 20px;
   padding: 6px 25px;
-  background-color: #6b6;
   color: #fff;
   font-size: 25px;
   border-radius: 3px;
 }
  
-.checkout:hover {
-  background-color: #494;
-}
  
 /* Make adjustments for tablet */
 @media screen and (max-width: 650px) {
@@ -232,4 +231,77 @@ label {
   .totals .totals-item .totals-value {
     width: 40%;
   }
+}
+
+
+
+
+
+
+
+/* Scoped overrides for shopping-cart text (avoid touching buttons/inputs) */
+/* Target text elements only so buttons keep their own styles */
+body .page-wrapper .shopping-cart,
+body .page-wrapper .shopping-cart p,
+body .page-wrapper .shopping-cart label,
+body .page-wrapper .shopping-cart span,
+body .page-wrapper .shopping-cart a,
+body .page-wrapper .shopping-cart h1,
+body .page-wrapper .shopping-cart h2,
+body .page-wrapper .shopping-cart h3,
+body .page-wrapper .shopping-cart h4,
+body .page-wrapper .shopping-cart h5,
+body .page-wrapper .shopping-cart h6,
+body .page-wrapper .shopping-cart .product-title,
+body .page-wrapper .shopping-cart .product-description,
+body .page-wrapper .shopping-cart .totals .totals-value {
+    color: var(--thm-black) !important;
+}
+
+/* Quantity inputs remain white with centered black number */
+body .page-wrapper .shopping-cart .product-quantity input[type="number"],
+body .page-wrapper .shopping-cart .product-quantity input.qty-input {
+    background: #ffffff !important;
+    color: var(--thm-black) !important;
+    text-align: center !important;
+    -webkit-appearance: textfield !important;
+    appearance: textfield !important;
+    box-shadow: none !important;
+    border: 1px solid #e5e5e5 !important;
+}
+
+/* Ensure native spinner visible if used */
+body .page-wrapper .shopping-cart .product-quantity input[type="number"]::-webkit-inner-spin-button,
+body .page-wrapper .shopping-cart .product-quantity input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: inner-spin-button !important;
+    opacity: 1 !important;
+    display: inline-block !important;
+}
+
+/* Make sure logo-like elements inside cart use theme black */
+body .page-wrapper .shopping-cart .logo-text,
+body .page-wrapper .shopping-cart .logo-initial {
+    background: transparent !important;
+    color: var(--thm-black) !important;
+}
+
+/* Explicitly force buttons to keep white text and their backgrounds */
+/* .thm-btn is defined in painter/static/home/assets/css/style.css */
+body .page-wrapper .shopping-cart .thm-btn,
+body .page-wrapper .shopping-cart .thm-btn * ,
+body .page-wrapper .shopping-cart button,
+body .page-wrapper .shopping-cart .remove-product,
+body .page-wrapper .shopping-cart .remove-product * {
+    color: #ffffff !important;
+}
+
+/* restore button backgrounds inside cart so they keep expected appearance */
+body .page-wrapper .shopping-cart .thm-btn {
+    background-color: var(--thm-base) !important;
+    color: #fff !important;
+    border: none !important;
+}
+body .page-wrapper .shopping-cart .remove-product {
+    background-color: #c66 !important;
+    color: #fff !important;
 }

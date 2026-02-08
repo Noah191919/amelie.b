@@ -23,7 +23,11 @@ def index(request):
 
 
 def blog(request):
-    return render(request, 'home/blog.html')
+    posts = BlogPost.objects.all()
+    context = {
+        "posts" : posts,
+    }
+    return render(request, 'home/blog.html', context)
 
 
 def original_creations(request):
