@@ -6784,19 +6784,17 @@ a:focus {
     .logo-text { display: inline-flex !important; align-items: center; gap: 8px; }
 
     /* show the side-menu mobile text logo */
-    .side-menu__logo-text { display: inline-flex; align-items: center; gap: 8px; }
+    .side-toggle__logo-text { display: inline-flex; align-items: center; gap: 8px; }
 
     /* style adjustments for mobile sizing */
-    .logo-text .logo-name,
-    .side-menu__logo-text .logo-name {
+    .side-toggle__logo-text .logo-name {
         font-family: 'Great Vibes', cursive;
         font-size: 26px;
         line-height: 1;
         transform: skewX(-6deg) rotate(-0.5deg);
 		color: white;
     }
-    .logo-text .logo-initial,
-    .side-menu__logo-text .logo-initial {
+    .side-toggle__logo-text .logo-initial {
         font-family: var(--heading-font), serif;
         font-weight: 700;
         font-size: 12px;
@@ -6810,5 +6808,5 @@ a:focus {
 
 /* keep desktop behavior unchanged */
 @media (min-width: 1200px) {
-    .side-menu__logo-text { display: none; }
+    .side-toggle__logo-text { display: none; }
 }
