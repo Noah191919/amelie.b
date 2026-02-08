@@ -3,27 +3,11 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="UTF-8">
+       <meta property="og:description" content="{% block og_description %}Amélie B : Bienvenue sur mon website !{% endblock %}">
+       {% if request %}
+         <meta property="og:url" content="{{ request.build_absolute_uri }}">
+       {% endif %}
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        {% with share_image=static 'home/assets/images/logo-share.png' %}
-        <meta property="og:type" content="website">
-        <meta property="og:title" content="{% block og_title %}Amélie B — Galerie{% endblock %}">
-        <meta property="og:description" content="{% block og_description %}Découvrez les dessins et tirages d'Amélie B.{% endblock %}">
-        {% if request %}
-            <meta property="og:url" content="{{ request.build_absolute_uri }}">
-            <meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ share_image }}">
-        {% else %}
-            <meta property="og:url" content="https://example.com/">
-            <meta property="og:image" content="https://example.com{{ share_image }}">
-        {% endif %}
-        <meta name="twitter:card" content="summary_large_image">
-        <meta name="twitter:title" content="{% block twitter_title %}Amélie B — Galerie{% endblock %}">
-        <meta name="twitter:description" content="{% block twitter_description %}Découvrez les dessins et tirages d'Amélie B.{% endblock %}">
-        {% if request %}
-            <meta name="twitter:image" content="{{ request.scheme }}://{{ request.get_host }}{{ share_image }}">
-        {% else %}
-            <meta name="twitter:image" content="https://example.com{{ share_image }}">
-        {% endif %}
-        {% endwith %}
         <title>Accueil | Amélie B</title>
 
         <!-- favicons -->
@@ -111,32 +95,6 @@
     // theme.js (central cart) handles all UI and click logic from now on.
 })();
 
-
-
-const fs = require('fs');
-const puppeteer = require('puppeteer');
-
-(async () => {
-  const html = `
-    <html><head>
-    <style>
-      body{margin:0;background:transparent}
-      .logo-text .logo-name{ font-family: 'Great Vibes', cursive; font-size:72px; color:#fff; }
-      .logo-text .logo-initial{ background:transparent; color:#fff; font-family:serif; font-weight:700; padding:6px 10px; }
-      .logo{ display:flex; align-items:center; gap:10px; padding:20px; background:#000; }
-    </style>
-    </head><body>
-      <div class="logo logo-text"><span class="logo-name">Amélie</span><span class="logo-initial">B</span></div>
-    </body></html>
-  `;
-  const browser = await puppeteer.launch();
-  const page = await browser.newPage();
-  await page.setViewport({ width: 1200, height: 630 });
-  await page.setContent(html);
-  await page.screenshot({ path: 'painter/static/home/assets/images/logo-share.png', omitBackground: true });
-  await browser.close();
-  console.log('logo-share.png generated');
-})();
 </script>
 
     </body>
